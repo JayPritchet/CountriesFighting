@@ -1,6 +1,7 @@
 /Temp/
 /.vs/
 /Logs/
+/obj/
 *.sln
 *.csproj
 *.vsconfig
