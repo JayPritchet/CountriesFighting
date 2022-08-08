@@ -2,6 +2,7 @@
 /.vs/
 /Logs/
 /obj/
+/output/
 *.sln
 *.csproj
 *.vsconfig

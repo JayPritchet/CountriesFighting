@@ -26,6 +26,7 @@ public class TanShe : MonoBehaviour
         {
             //FireAnim();
             CreateBullet();
+            
         }
        
     }
