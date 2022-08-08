@@ -6,7 +6,7 @@ using UnityEngine;
 public class TanShe : MonoBehaviour
 {
     
-    int next_ball = 0;
+    int next_ball = 1;
     
     //枪杆
     public Transform gang;
@@ -57,6 +57,7 @@ public class TanShe : MonoBehaviour
 
 
         go.transform.SetParent(gang);
+        
         go.transform.localPosition = Vector3.zero;
         go.transform.localScale = Vector3.one;
         go.transform.localEulerAngles = Vector3.zero;

@@ -1,11 +1,20 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Tilemaps;
 
 public class TanseBullet : MonoBehaviour
 {
     Rigidbody2D rig2d;
     RectTransform rect;
+
+    public Tilemap tilemap;
+
+    public TileBase team1_tile;
+    public TileBase team2_tile;
+    public TileBase team3_tile;
+    public TileBase team4_tile;
+
 
     //反弹力
     float speed = 10;
@@ -15,6 +24,7 @@ public class TanseBullet : MonoBehaviour
     {
         rect= transform.GetComponent<RectTransform>();
         rig2d = transform.GetComponent<Rigidbody2D>();
+
     }
 
     // Update is called once per frame
@@ -22,9 +32,28 @@ public class TanseBullet : MonoBehaviour
     {
         CheckBoundary();
     }
+    void OnCollisionEnter2D(Collision2D collision)
+    {    
+        if(collision.gameObject.tag.ToString().CompareTo("map") == 0)
+        {
+            Vector3Int p = new Vector3Int((int)(collision.gameObject.transform.position.x), (int)collision.gameObject.transform.position.y, 0);
+            p = new Vector3Int(0,0,0);
+            if (this.gameObject.tag.ToString().CompareTo("team1_ball") == 0)
+            {  
+                Debug.Log(p);
+                tilemap.SetTile(p, team1_tile);
+            }
+            else if (this.gameObject.tag.ToString().CompareTo("team2_ball") == 0)
+                tilemap.SetTile(p, team2_tile);
+            else if (this.gameObject.tag.ToString().CompareTo("team3_ball") == 0)
+                tilemap.SetTile(p, team3_tile);
+            else if (this.gameObject.tag.ToString().CompareTo("team4_ball") == 0)
+                tilemap.SetTile(p, team4_tile);
+        }
+    }
 
-    //检测边界
-    void CheckBoundary()
+        //检测边界
+        void CheckBoundary()
     {
         Vector3 pos = Camera.main.WorldToScreenPoint(transform.position);
        // if(rect.rect.)

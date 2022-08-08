@@ -1,0 +1,19 @@
+fileFormatVersion: 2
+guid: f017ce9d5bfbfad4cba57ad0d0122337
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - team1_tile: {fileID: 4664173651550103907, guid: 36386414c1681f74fb4b4727152af344,
+      type: 3}
+  - team2_tile: {fileID: 6492471334835575999, guid: 7860a718448e9e24088c7e0235ba7824,
+      type: 3}
+  - team3_tile: {fileID: 6351600385218903179, guid: fd7afad269ecdfc43a4a39f78f40834a,
+      type: 3}
+  - team4_tile: {fileID: 2214772217305452506, guid: d936f3d557f65c54f812fda0616ced04,
+      type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

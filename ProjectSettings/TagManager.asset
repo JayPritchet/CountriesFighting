@@ -3,7 +3,12 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - map
+  - team1_ball
+  - team2_ball
+  - team3_ball
+  - team4_ball
   layers:
   - Default
   - TransparentFX
@@ -23,7 +28,7 @@ TagManager:
   - team3_map
   - team4_map
   - team5_map
-  - 
+  - map
   - 
   - 
   - 

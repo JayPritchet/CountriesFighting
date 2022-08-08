@@ -3,7 +3,13 @@ guid: 5d9534729966c2a40af4d238ce1f904c
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - tilemap: {fileID: 2686391293872920900, guid: 14014f97d45ed5249a5edf1da8377042,
+      type: 3}
+  - team1_tile: {fileID: 11400000, guid: f0a0bd3e6a62ae64687d678286ff14d2, type: 2}
+  - team2_tile: {fileID: 11400000, guid: 371762e5bee839a41977b92a0b738147, type: 2}
+  - team3_tile: {fileID: 11400000, guid: f0989e1a525be4e45b00b95894be9804, type: 2}
+  - team4_tile: {fileID: 11400000, guid: 380cbf21ba931964094fee174ef780c3, type: 2}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
