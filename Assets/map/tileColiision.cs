@@ -20,6 +20,7 @@ public class tileColiision : MonoBehaviour
     }
     void OnCollisionEnter2D(Collision2D c)
     {
+
        // if (c.gameObject.layer != this.gameObject.layer&&c.gameObject.tag.ToString()!="tile")
         {
             Vector3 pos = this.transform.localPosition;

@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 4664173651550103919}
   - component: {fileID: 4664173651550103916}
   - component: {fileID: 4664173651550103906}
-  - component: {fileID: 7969530437128823997}
   - component: {fileID: 4902260227005535563}
   m_Layer: 13
   m_Name: team1_tile
@@ -110,26 +109,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &7969530437128823997
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4664173651550103907}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f017ce9d5bfbfad4cba57ad0d0122337, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  team1_tile: {fileID: 4664173651550103907}
-  team2_tile: {fileID: 6492471334835575999, guid: 7860a718448e9e24088c7e0235ba7824,
-    type: 3}
-  team3_tile: {fileID: 6351600385218903179, guid: fd7afad269ecdfc43a4a39f78f40834a,
-    type: 3}
-  team4_tile: {fileID: 2214772217305452506, guid: d936f3d557f65c54f812fda0616ced04,
-    type: 3}
-  tilemap: {fileID: 5896364733960960401, guid: 43e1670a68c18ec4bb03479956ea958e, type: 3}
 --- !u!50 &4902260227005535563
 Rigidbody2D:
   serializedVersion: 4

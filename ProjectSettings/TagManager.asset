@@ -9,6 +9,9 @@ TagManager:
   - team2_ball
   - team3_ball
   - team4_ball
+  - bound
+  - tile
+  - ball
   layers:
   - Default
   - TransparentFX
