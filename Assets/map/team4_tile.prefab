@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 2214772217305452511}
   - component: {fileID: 2214772217305452508}
   - component: {fileID: -8549050171432706109}
+  - component: {fileID: 4347605430933724565}
   m_Layer: 16
   m_Name: team4_tile
   m_TagString: tile
@@ -130,3 +131,16 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 7
+--- !u!114 &4347605430933724565
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2214772217305452506}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 42c2bb44703a985428b4a3dcfdea2edd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  teamNumber: 4

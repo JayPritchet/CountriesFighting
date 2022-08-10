@@ -1,11 +1,17 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ballCollision : MonoBehaviour
 {
     public GameObject team_tile;
-    public GameObject tilemap;
+    private GameObject tilemap;
+
+    public Text score1;
+    public Text score2;
+    public Text score3;
+    public Text score4;
 
     // Start is called before the first frame update
     void Start()
@@ -14,7 +20,6 @@ public class ballCollision : MonoBehaviour
     }
     void OnCollisionEnter2D(Collision2D c)
     {
-
         if (c.gameObject.tag != "tile")
             return;
 
@@ -28,15 +33,14 @@ public class ballCollision : MonoBehaviour
         tile.transform.localPosition = pos;
         tile.transform.localScale = scale;
 
-        if (this.GetComponent<Rigidbody2D>().velocity.x == 0 && this.GetComponent<Rigidbody2D>().velocity.y == 0)
-            this.GetComponent<Rigidbody2D>().velocity = new Vector2(1,1);
-        
-        this.GetComponent<Rigidbody2D>().velocity = this.GetComponent<Rigidbody2D>().velocity.normalized*3;
     }
 
     // Update is called once per frame
     void Update()
     {
-
+        if (this.GetComponent<Rigidbody2D>().velocity.x == 0 && this.GetComponent<Rigidbody2D>().velocity.y == 0)
+            this.GetComponent<Rigidbody2D>().velocity = new Vector2(1,1);
+        
+        this.GetComponent<Rigidbody2D>().velocity = this.GetComponent<Rigidbody2D>().velocity.normalized*3;
     }
 }
