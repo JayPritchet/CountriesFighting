@@ -41,6 +41,6 @@ public class ballCollision : MonoBehaviour
         if (this.GetComponent<Rigidbody2D>().velocity.x == 0 && this.GetComponent<Rigidbody2D>().velocity.y == 0)
             this.GetComponent<Rigidbody2D>().velocity = new Vector2(1,1);
         
-        this.GetComponent<Rigidbody2D>().velocity = this.GetComponent<Rigidbody2D>().velocity.normalized*3;
+        this.GetComponent<Rigidbody2D>().velocity = this.GetComponent<Rigidbody2D>().velocity.normalized*2;
     }
 }

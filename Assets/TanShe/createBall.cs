@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class createBall : MonoBehaviour
 {
@@ -20,7 +21,18 @@ public class createBall : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        System.Random rd = new System.Random();
         tilemap = GameObject.Find("bound");
+        for (int i = 1; i <= 4; i++)
+        {
+            int n = rd.Next(2,5);
+
+            for (int j = 1; j <= n; j++)
+            {
+                CreateBullet(i);
+            }
+        }
+
     }
     // Update is called once per frame
     void Update()
