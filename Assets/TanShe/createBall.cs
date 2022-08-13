@@ -2,6 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using System.Net;
+using Newtonsoft.Json.Linq;
+using Newtonsoft.Json;
+using System.Text;
 
 public class createBall : MonoBehaviour
 {
@@ -17,10 +21,12 @@ public class createBall : MonoBehaviour
 
 
     public GameObject tilemap;
+    private List<string> uid_exist=new List<string>();
 
     // Start is called before the first frame update
     void Start()
     {
+        /*
         System.Random rd = new System.Random();
         tilemap = GameObject.Find("bound");
         for (int i = 1; i <= 4; i++)
@@ -29,10 +35,10 @@ public class createBall : MonoBehaviour
 
             for (int j = 1; j <= n; j++)
             {
-                CreateBullet(i);
+                CreateBullet(i,"1");
             }
         }
-
+        */
     }
     // Update is called once per frame
     void Update()
@@ -40,25 +46,29 @@ public class createBall : MonoBehaviour
         //可能有延迟 可能是bug 待修复
         if (Input.GetKeyUp("1"))
         {
-            CreateBullet(1);
+            CreateBullet(1,"1");
         }
         if (Input.GetKeyUp("2"))
         {
-            CreateBullet(2);
+            CreateBullet(2, "1");
         }
         if (Input.GetKeyUp("3"))
         {
-            CreateBullet(3);
+            CreateBullet(3, "1");
         }
         if (Input.GetKeyUp("4"))
         {
-            CreateBullet(4);
+            CreateBullet(4, "1");
         }
     }
 
 
-    void CreateBullet(int type)
+    public void CreateBullet(int type,string uid)
     {
+        if (uid_exist.Exists(t => t == uid))
+            return;
+
+        uid_exist.Add(uid);
         GameObject go;
 
         switch (type)
@@ -90,5 +100,6 @@ public class createBall : MonoBehaviour
 
         //给子弹添加一个初始的力
         go.GetComponent<Rigidbody2D>().AddForce(go.transform.up * 50);
+        go.GetComponent<ball>().uid = uid;
     }
 }

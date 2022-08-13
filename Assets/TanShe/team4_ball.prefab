@@ -10,10 +10,11 @@ GameObject:
   m_Component:
   - component: {fileID: 5224643549825304484}
   - component: {fileID: 5224643549825304505}
-  - component: {fileID: 5224643549825304506}
+  - component: {fileID: -2388545191050388814}
   - component: {fileID: 5224643549825304504}
   - component: {fileID: -7581945824228672222}
   - component: {fileID: -8957666745987761646}
+  - component: {fileID: 7031300155927875159}
   m_Layer: 11
   m_Name: team4_ball
   m_TagString: ball
@@ -48,7 +49,7 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5224643549825304485}
   m_CullTransparentMesh: 0
---- !u!114 &5224643549825304506
+--- !u!114 &-2388545191050388814
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -57,11 +58,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 5224643549825304485}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Script: {fileID: 11500000, guid: fda63d6feb54b47469a446ed76a53a60, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 1, b: 0.10657358, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -76,6 +77,9 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+  segements: 100
+  showPercent: 1
+  _vertexList: []
 --- !u!50 &5224643549825304504
 Rigidbody2D:
   serializedVersion: 4
@@ -127,4 +131,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   team_tile: {fileID: 2214772217305452506, guid: d936f3d557f65c54f812fda0616ced04,
     type: 3}
-  tilemap: {fileID: 0}
+  score1: {fileID: 0}
+  score2: {fileID: 0}
+  score3: {fileID: 0}
+  score4: {fileID: 0}
+--- !u!114 &7031300155927875159
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5224643549825304485}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd7a747ffed4cda44b592b7b60a36a01, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uid: 
