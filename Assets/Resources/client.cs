@@ -11,7 +11,7 @@ public class client : MonoBehaviour
     private Socket tcpClient;
     private string serverIP = "127.0.0.1";//服务器ip地址
     private int serverPort = 50000;//端口号
-    private createBall ballCreator;
+    private ballManager ballMgr;
 
     private string msg;
     private Thread recvProcess;
@@ -20,7 +20,7 @@ public class client : MonoBehaviour
     void Start()
     {
         msg = "";
-        ballCreator=GameObject.Find("EventSystem").GetComponent<createBall>();
+        ballMgr=GameObject.Find("EventSystem").GetComponent<ballManager>();
         //1、创建socket
         tcpClient = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
 
@@ -59,7 +59,7 @@ public class client : MonoBehaviour
     {
         while(true)
         {
-        byte[] data = new byte[1024];
+        byte[] data = new byte[128];
         int length = tcpClient.Receive(data);
         msg = Encoding.UTF8.GetString(data, 0, length);
         print("msg:"+msg);
@@ -68,14 +68,13 @@ public class client : MonoBehaviour
     }
     void dealCmd(string cmd) 
     {
-
-        print("cmd:"+cmd);
         switch (cmd[0])
         {
             case 'a':
-                ballCreator.CreateBullet(cmd[1]-'0',cmd.Substring(3));
+                ballMgr.CreateBall(cmd[1]-'0',cmd.Substring(3));
                 break;
             case 'b':
+                ballMgr.SetSpeed(cmd.Substring(3),4,10);
                 break;
             case 'c':
                 break;

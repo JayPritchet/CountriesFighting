@@ -5,6 +5,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Net;
 using System.Text;
+using System.Threading;
 using UnityEngine;
 using UnityEngine.Networking;
 using UnityEngine.UI;
@@ -51,9 +52,24 @@ public class ball : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
-    }
 
+    }
+    public void SetSpeed(int speed, int time = -1)
+    {
+        var ball_speed=this.GetComponent<ballCollision>();
+        ball_speed.speed = speed;
+        if (time > 0)
+        {
+            Thread t = new Thread(
+            () => {
+                Thread.Sleep(time*1000);
+                ball_speed.speed = 2;
+                Thread.CurrentThread.Abort();
+                }
+            );
+            t.Start();
+        }
+    }
 
     private void OnApplicationQuit()
     {

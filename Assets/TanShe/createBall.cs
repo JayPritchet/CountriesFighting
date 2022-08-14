@@ -26,19 +26,19 @@ public class createBall : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        /*
+        
         System.Random rd = new System.Random();
         tilemap = GameObject.Find("bound");
         for (int i = 1; i <= 4; i++)
         {
-            int n = rd.Next(2,5);
+            int n = rd.Next(1,3);
 
             for (int j = 1; j <= n; j++)
             {
-                CreateBullet(i,"1");
+                CreateBullet(i,(i*10+j).ToString());
             }
         }
-        */
+        
     }
     // Update is called once per frame
     void Update()

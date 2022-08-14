@@ -1,10 +1,13 @@
 ScriptsOnlyBuild:
   usedScripts:
     Assembly-CSharp.dll:
+    - CircleImage
     - GameOver
+    - ball
     - ballCollision
+    - ballManager
+    - client
     - count_down
-    - createBall
     - teamScore
     - updateScore
     DOTween.dll:
@@ -76,31 +79,37 @@ ScriptsOnlyBuild:
     - Class: 104
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 11172}
+      Script: {instanceID: 11174}
     - Class: 114
-      Script: {instanceID: 11292}
+      Script: {instanceID: 11360}
     - Class: 114
-      Script: {instanceID: 11358}
+      Script: {instanceID: 11402}
     - Class: 114
-      Script: {instanceID: 11400}
+      Script: {instanceID: 11426}
     - Class: 114
-      Script: {instanceID: 11424}
+      Script: {instanceID: 11774}
     - Class: 114
-      Script: {instanceID: 11770}
+      Script: {instanceID: 11808}
     - Class: 114
-      Script: {instanceID: 11804}
+      Script: {instanceID: 11846}
     - Class: 114
-      Script: {instanceID: 11842}
+      Script: {instanceID: 11980}
     - Class: 114
-      Script: {instanceID: 12024}
+      Script: {instanceID: 12030}
     - Class: 114
-      Script: {instanceID: 12074}
+      Script: {instanceID: 12080}
     - Class: 114
-      Script: {instanceID: 12184}
+      Script: {instanceID: 12190}
     - Class: 114
-      Script: {instanceID: 12812}
+      Script: {instanceID: 12818}
     - Class: 114
-      Script: {instanceID: 13220}
+      Script: {instanceID: 13228}
+    - Class: 114
+      Script: {instanceID: 13246}
+    - Class: 114
+      Script: {instanceID: 13250}
+    - Class: 114
+      Script: {instanceID: 497808}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -256,6 +265,12 @@ ScriptsOnlyBuild:
     className: LayoutElement
   - hash:
       serializedVersion: 2
+      Hash: 7b58da42ea960ca7ddaf830d9441ff9f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: JsonNetSample
+  - hash:
+      serializedVersion: 2
       Hash: 18c222bef9ae745ce69ddde9b74337ca
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.EventSystems
@@ -322,7 +337,7 @@ ScriptsOnlyBuild:
     className: updateScore
   - hash:
       serializedVersion: 2
-      Hash: 7682ef12439d06a3772ed4595bc18ece
+      Hash: de41af34285410d0091702c1207cdb50
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: ballCollision
@@ -362,6 +377,12 @@ ScriptsOnlyBuild:
     assemblyName: Unity.2D.Tilemap.Extras.dll
     namespaceName: UnityEngine.Tilemaps
     className: AnimatedTile
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: client
   - hash:
       serializedVersion: 2
       Hash: 0e05c843b347bcd81703c6ad997824ad
@@ -652,10 +673,22 @@ ScriptsOnlyBuild:
     className: Toggle
   - hash:
       serializedVersion: 2
+      Hash: 2bc281d40e6b6c5353363654521b241c
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: CircleImage
+  - hash:
+      serializedVersion: 2
       Hash: 8220b46879dc5e37db1b940c938f5744
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
     className: SignalEmitter
+  - hash:
+      serializedVersion: 2
+      Hash: b39c5e528207cfb0705d993ec0ebe62e
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: ball
   - hash:
       serializedVersion: 2
       Hash: 7072231382eb3c4871b3dd75ad0227e1
@@ -674,6 +707,12 @@ ScriptsOnlyBuild:
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
     className: PlayableTrack
+  - hash:
+      serializedVersion: 2
+      Hash: df96c3671bb43663d82644e745f3c353
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: ballManager
   platform: 19
   scenePathNames:
   - Assets/TanShe/TanSe.unity

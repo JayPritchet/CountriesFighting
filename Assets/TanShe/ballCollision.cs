@@ -12,6 +12,7 @@ public class ballCollision : MonoBehaviour
     public Text score2;
     public Text score3;
     public Text score4;
+    public int speed=2;
 
     // Start is called before the first frame update
     void Start()
@@ -41,6 +42,6 @@ public class ballCollision : MonoBehaviour
         if (this.GetComponent<Rigidbody2D>().velocity.x == 0 && this.GetComponent<Rigidbody2D>().velocity.y == 0)
             this.GetComponent<Rigidbody2D>().velocity = new Vector2(1,1);
         
-        this.GetComponent<Rigidbody2D>().velocity = this.GetComponent<Rigidbody2D>().velocity.normalized*2;
+        this.GetComponent<Rigidbody2D>().velocity = this.GetComponent<Rigidbody2D>().velocity.normalized*speed;
     }
 }
