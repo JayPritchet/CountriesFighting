@@ -5,6 +5,7 @@ using System.Net;
 using System.Net.Sockets;
 using System.Text;
 using System.Threading;
+using System;
 
 public class client : MonoBehaviour
 {
@@ -16,28 +17,95 @@ public class client : MonoBehaviour
     private string msg;
     private Thread recvProcess;
 
+    enum ClientStatus { connected, disconnected, connectting };
+    private ClientStatus clientStatus = ClientStatus.disconnected;
+
     // Start is called before the first frame update
     void Start()
     {
         msg = "";
-        ballMgr=GameObject.Find("EventSystem").GetComponent<ballManager>();
-        //1、创建socket
-        tcpClient = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+        ballMgr = GameObject.Find("EventSystem").GetComponent<ballManager>();
 
-        //2、建立一个连接请求
-        IPAddress iPAddress = IPAddress.Parse(serverIP);
-        EndPoint endPoint = new IPEndPoint(iPAddress, serverPort);
-        tcpClient.Connect(endPoint);
-        print("请求服务器连接");
+       // checkConnectting();
+    }
+    void connectToHost()
+    {
+        while (true)
+        {
 
-        recvProcess = new Thread(new ThreadStart(recvCmd));
-        recvProcess.Start();
+            print("retrying");
+            //1、创建socket
+            tcpClient = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+
+            //2、建立一个连接请求
+            IPAddress iPAddress = IPAddress.Parse(serverIP);
+            EndPoint endPoint = new IPEndPoint(iPAddress, serverPort);
+
+            print("retrying1");
+
+            //IAsyncResult result = tcpClient.BeginConnect(endPoint, null, null);
+            //result.AsyncWaitHandle.WaitOne(5000);
+            try
+            {
+                tcpClient.Connect(endPoint);
+            }//end of try 
+            catch (SocketException e)
+            {
+                print(e.Message);
+            }
+
+            print("retrying2");
+
+            try
+            {
+            tcpClient.Send(Encoding.Default.GetBytes("connectted"));
+            }//end of try 
+            catch (SocketException e)
+            {
+                print(e.Message);
+            }
+            if (tcpClient.Connected)
+            {
+                print("连接成功");
+
+                recvProcess = new Thread(new ThreadStart(recvCmd));
+                recvProcess.Start();
+                clientStatus = ClientStatus.connected;
+                Thread.CurrentThread.Abort();
+            }
+            else
+                print("failed,retrying");
+        }
+    }
+    void checkConnectting()
+    {
+        if (clientStatus == ClientStatus.disconnected)
+        {
+            if (recvProcess != null)
+                recvProcess.Abort();
+            if (tcpClient != null)
+                tcpClient.Close();
+
+            clientStatus = ClientStatus.connectting;
+            print("reconnectting");
+            Thread t = new Thread(new ThreadStart(connectToHost));
+            t.Start();
+        }
+
+        if (clientStatus == ClientStatus.connectting)
+        { 
+           // print("connectting");
+        }
+
+        return;
 
     }
 
     // Update is called once per frame
     void Update()
     {
+        checkConnectting();
+
         if (msg == "")
             return;
         for (int i = 0; i < msg.Length; i++)
@@ -57,29 +125,48 @@ public class client : MonoBehaviour
 
     void recvCmd()
     {
-        while(true)
-        {
         byte[] data = new byte[128];
-        int length = tcpClient.Receive(data);
-        msg = Encoding.UTF8.GetString(data, 0, length);
-        print("msg:"+msg);
-        Thread.Sleep(50);
+        while (true)
+        { 
+            int length=0;
+            try
+            {
+            length= tcpClient.Receive(data);
+            }//end of try 
+            catch (SocketException e)
+            {
+                clientStatus = ClientStatus.disconnected;
+                print("disconnectted");
+                /*
+            if (length <= 0 || tcpClient.Connected == false)
+            {
+                clientStatus = ClientStatus.disconnected;
+                print("disconnectted");
+                return;
+            }
+            */
+                return;
+            }
+
+            msg = Encoding.UTF8.GetString(data, 0, length);
+            print("msg:" + msg);
+            Thread.Sleep(50);
         }
     }
-    void dealCmd(string cmd) 
+    void dealCmd(string cmd)
     {
         switch (cmd[0])
         {
             case 'a':
-                ballMgr.CreateBall(cmd[1]-'0',cmd.Substring(3));
+                ballMgr.CreateBall(cmd[1] - '0', cmd.Substring(3));
                 break;
             case 'b':
-                ballMgr.SetSpeed(cmd.Substring(3),4,10);
+                ballMgr.SetSpeed(cmd.Substring(3), 4, 10);
                 break;
             case 'c':
                 break;
         }
-    
+
     }
 
     private void OnDestroy()

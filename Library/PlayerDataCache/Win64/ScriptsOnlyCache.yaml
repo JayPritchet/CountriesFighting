@@ -87,29 +87,29 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 11426}
     - Class: 114
-      Script: {instanceID: 11774}
+      Script: {instanceID: 11566}
     - Class: 114
-      Script: {instanceID: 11808}
+      Script: {instanceID: 11776}
     - Class: 114
-      Script: {instanceID: 11846}
+      Script: {instanceID: 11810}
     - Class: 114
-      Script: {instanceID: 11980}
+      Script: {instanceID: 11848}
     - Class: 114
-      Script: {instanceID: 12030}
+      Script: {instanceID: 11982}
     - Class: 114
-      Script: {instanceID: 12080}
+      Script: {instanceID: 12032}
     - Class: 114
-      Script: {instanceID: 12190}
+      Script: {instanceID: 12082}
     - Class: 114
-      Script: {instanceID: 12818}
+      Script: {instanceID: 12192}
     - Class: 114
-      Script: {instanceID: 13228}
+      Script: {instanceID: 12820}
     - Class: 114
-      Script: {instanceID: 13246}
+      Script: {instanceID: 13230}
     - Class: 114
-      Script: {instanceID: 13250}
+      Script: {instanceID: 13248}
     - Class: 114
-      Script: {instanceID: 497808}
+      Script: {instanceID: 13252}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -275,6 +275,12 @@ ScriptsOnlyBuild:
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.EventSystems
     className: PhysicsRaycaster
+  - hash:
+      serializedVersion: 2
+      Hash: df96c3671bb43663d82644e745f3c353
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: ballManager
   - hash:
       serializedVersion: 2
       Hash: cd1c93a552a813159175d818a844dc09
@@ -707,12 +713,6 @@ ScriptsOnlyBuild:
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
     className: PlayableTrack
-  - hash:
-      serializedVersion: 2
-      Hash: df96c3671bb43663d82644e745f3c353
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: ballManager
   platform: 19
   scenePathNames:
   - Assets/TanShe/TanSe.unity
