@@ -35,9 +35,22 @@ public class ballManager : MonoBehaviour
         }
     }
 
-    public void SetSpeed(string uid,int speed,int time)
+    public void SetSpeed(string uid, int speed, int time)
     {
-        uidToObject[uid].GetComponent<ball>().SetSpeed(speed,time);
+        uidToObject[uid].GetComponent<ball>().SetSpeed(speed, time);
+    }
+
+    public void ChangeSize(string uid, float scale, int time)
+    {
+        uidToObject[uid].GetComponent<ball>().ChangeSize(scale, time);
+    }
+    public void ReverseDirection(string uid)
+    {
+        uidToObject[uid].GetComponent<ball>().ReverseDirection();
+    }
+    public void Clone(string uid)
+    {
+        uidToObject[uid].GetComponent<ball>().Clone();
     }
 
     public void CreateBall(int type, string uid)

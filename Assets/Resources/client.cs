@@ -43,8 +43,7 @@ public class client : MonoBehaviour
 
             print("retrying1");
 
-            //IAsyncResult result = tcpClient.BeginConnect(endPoint, null, null);
-            //result.AsyncWaitHandle.WaitOne(5000);
+
             try
             {
                 tcpClient.Connect(endPoint);
@@ -52,13 +51,14 @@ public class client : MonoBehaviour
             catch (SocketException e)
             {
                 print(e.Message);
+                return;
             }
 
             print("retrying2");
 
             try
             {
-            tcpClient.Send(Encoding.Default.GetBytes("connectted"));
+                tcpClient.Send(Encoding.Default.GetBytes("connectted"));
             }//end of try 
             catch (SocketException e)
             {
@@ -67,6 +67,9 @@ public class client : MonoBehaviour
             if (tcpClient.Connected)
             {
                 print("连接成功");
+
+                tcpClient.SetSocketOption(SocketOptionLevel.Socket, SocketOptionName.SendTimeout,400);
+                tcpClient.SetSocketOption(SocketOptionLevel.Socket, SocketOptionName.ReceiveTimeout, 400);
 
                 recvProcess = new Thread(new ThreadStart(recvCmd));
                 recvProcess.Start();
@@ -164,6 +167,13 @@ public class client : MonoBehaviour
                 ballMgr.SetSpeed(cmd.Substring(3), 4, 10);
                 break;
             case 'c':
+                ballMgr.ChangeSize(cmd.Substring(3), 1.5f, 10);
+                break;
+            case 'd':
+                ballMgr.ReverseDirection(cmd.Substring(3));
+                break;
+            case 'e':
+                ballMgr.ReverseDirection(cmd.Substring(3));
                 break;
         }
 

@@ -13,6 +13,9 @@ using UnityEngine.UI;
 public class ball : MonoBehaviour
 {
     public string uid;
+    public int radius;
+
+    private List<GameObject> clones;
 
     // Start is called before the first frame update
     void Start()
@@ -54,18 +57,60 @@ public class ball : MonoBehaviour
     {
 
     }
+
+    void DrawLineToClones()
+    {
+    
+    }
+
+    public void Clone()
+    {
+        GameObject clone=GameObject.Instantiate(this.gameObject);
+        clones.Add(clone);
+
+    }
+
+    public void ReverseDirection()
+    {
+        this.GetComponent<Rigidbody2D>().velocity = this.GetComponent<Rigidbody2D>().velocity* (-1);
+    }
+    public void ChangeSize(float scale, int time = -1)
+    {
+        var trans = this.GetComponent<RectTransform>();
+        var collider = this.GetComponent<CircleCollider2D>();
+
+        float old_trans_width = trans.rect.width;
+        float old_trans_height = trans.rect.height;
+        float old_collider_radius = collider.radius;
+
+        trans.rect.Set(trans.rect.x, trans.rect.y, old_trans_width * scale, old_trans_height * scale);
+        collider.radius = old_collider_radius * scale;
+
+        if (time > 0)
+        {
+            Thread t = new Thread(
+            () => {
+                Thread.Sleep(time * 1000);
+                trans.rect.Set(trans.rect.x, trans.rect.y, old_trans_width, old_trans_height);
+                collider.radius = old_collider_radius;
+                Thread.CurrentThread.Abort();
+            }
+            );
+            t.Start();
+        }
+    }
     public void SetSpeed(int speed, int time = -1)
     {
-        var ball_speed=this.GetComponent<ballCollision>();
+        var ball_speed = this.GetComponent<ballCollision>();
         ball_speed.speed = speed;
         if (time > 0)
         {
             Thread t = new Thread(
             () => {
-                Thread.Sleep(time*1000);
+                Thread.Sleep(time * 1000);
                 ball_speed.speed = 2;
                 Thread.CurrentThread.Abort();
-                }
+            }
             );
             t.Start();
         }
