@@ -51,7 +51,7 @@ public class client : MonoBehaviour
             catch (SocketException e)
             {
                 print(e.Message);
-                return;
+                continue;
             }
 
             print("retrying2");
@@ -63,13 +63,14 @@ public class client : MonoBehaviour
             catch (SocketException e)
             {
                 print(e.Message);
+                continue;
             }
             if (tcpClient.Connected)
             {
                 print("连接成功");
 
-                tcpClient.SetSocketOption(SocketOptionLevel.Socket, SocketOptionName.SendTimeout,400);
-                tcpClient.SetSocketOption(SocketOptionLevel.Socket, SocketOptionName.ReceiveTimeout, 400);
+                //tcpClient.SetSocketOption(SocketOptionLevel.Socket, SocketOptionName.SendTimeout,400);
+                //tcpClient.SetSocketOption(SocketOptionLevel.Socket, SocketOptionName.ReceiveTimeout, 400);
 
                 recvProcess = new Thread(new ThreadStart(recvCmd));
                 recvProcess.Start();
@@ -139,6 +140,7 @@ public class client : MonoBehaviour
             catch (SocketException e)
             {
                 clientStatus = ClientStatus.disconnected;
+                print(e.Message);
                 print("disconnectted");
                 /*
             if (length <= 0 || tcpClient.Connected == false)
