@@ -36,7 +36,7 @@ public class client : MonoBehaviour
             print("retrying");
             //1、创建socket
             tcpClient = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
-
+            tcpClient.SetSocketOption(SocketOptionLevel.Socket, SocketOptionName.ReuseAddress, true);
             //2、建立一个连接请求
             IPAddress iPAddress = IPAddress.Parse(serverIP);
             EndPoint endPoint = new IPEndPoint(iPAddress, serverPort);
@@ -88,8 +88,10 @@ public class client : MonoBehaviour
             if (recvProcess != null)
                 recvProcess.Abort();
             if (tcpClient != null)
+            {
+                tcpClient.Shutdown(SocketShutdown.Both);
                 tcpClient.Close();
-
+            }
             clientStatus = ClientStatus.connectting;
             print("reconnectting");
             Thread t = new Thread(new ThreadStart(connectToHost));
@@ -114,7 +116,7 @@ public class client : MonoBehaviour
             return;
         for (int i = 0; i < msg.Length; i++)
         {
-            if (!(msg[i] == 'a' || (msg[i] == 'b') || (msg[i] == 'c')))
+            if (!(msg[i] == 'a' || (msg[i] == 'b') || (msg[i] == 'c') || (msg[i] == 'd') || (msg[i] == 'e')))
                 continue;
 
             for (int j = i + 1; j < msg.Length; j++)
@@ -135,7 +137,7 @@ public class client : MonoBehaviour
             int length=0;
             try
             {
-            length= tcpClient.Receive(data);
+            length = tcpClient.Receive(data);
             }//end of try 
             catch (SocketException e)
             {
@@ -153,6 +155,12 @@ public class client : MonoBehaviour
                 return;
             }
 
+            if (length <= 0 || tcpClient.Connected == false)
+            {
+                clientStatus = ClientStatus.disconnected;
+                print("disconnectted");
+                return;
+            }
             msg = Encoding.UTF8.GetString(data, 0, length);
             print("msg:" + msg);
             Thread.Sleep(50);
@@ -168,13 +176,13 @@ public class client : MonoBehaviour
             case 'b':
                 ballMgr.SetSpeed(cmd.Substring(3), 4, 10);
                 break;
-            case 'c':
+            case 'e':
                 ballMgr.ChangeSize(cmd.Substring(3), 1.5f, 10);
                 break;
             case 'd':
                 ballMgr.ReverseDirection(cmd.Substring(3));
                 break;
-            case 'e':
+            case 'c':
                 ballMgr.ReverseDirection(cmd.Substring(3));
                 break;
         }
@@ -184,6 +192,7 @@ public class client : MonoBehaviour
     private void OnDestroy()
     {
         recvProcess.Abort();
+        tcpClient.Shutdown(SocketShutdown.Both);
         tcpClient.Close();
     }
 }

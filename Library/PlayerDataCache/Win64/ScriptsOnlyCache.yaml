@@ -691,7 +691,7 @@ ScriptsOnlyBuild:
     className: SignalEmitter
   - hash:
       serializedVersion: 2
-      Hash: b39c5e528207cfb0705d993ec0ebe62e
+      Hash: b9df4ce920f9ffde8fa9545996ca84d7
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: ball

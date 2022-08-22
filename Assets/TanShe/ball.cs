@@ -15,6 +15,8 @@ public class ball : MonoBehaviour
     public string uid;
     public int radius;
 
+    private int scale;
+
     private List<GameObject> clones;
 
     // Start is called before the first frame update
@@ -78,6 +80,7 @@ public class ball : MonoBehaviour
     {
         var trans = this.GetComponent<RectTransform>();
         var collider = this.GetComponent<CircleCollider2D>();
+        var rect = trans.rect;
 
         float old_trans_width = trans.rect.width;
         float old_trans_height = trans.rect.height;
@@ -91,12 +94,15 @@ public class ball : MonoBehaviour
             Thread t = new Thread(
             () => {
                 Thread.Sleep(time * 1000);
-                trans.rect.Set(trans.rect.x, trans.rect.y, old_trans_width, old_trans_height);
+                rect.Set(rect.x, rect.y, old_trans_width, old_trans_height);
                 collider.radius = old_collider_radius;
                 Thread.CurrentThread.Abort();
             }
             );
             t.Start();
+
+            DateTime LastTime = DateTime.Now;
+
         }
     }
     public void SetSpeed(int speed, int time = -1)

@@ -244,4 +244,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   winnerText: {fileID: 4198073048132063623}
   countDownText: {fileID: 2479461870814723877}
-  totalSeconds: 10
+  totalSeconds: 1

@@ -18,6 +18,6 @@ public class teamScore : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        this.GetComponent<Text>().text = TeamColor[teamNumber] + "队分数：" + score.ToString();
+        this.GetComponent<Text>().text = score.ToString();
     }
 }
